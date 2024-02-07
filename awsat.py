@@ -11,6 +11,30 @@ driver = webdriver.Chrome()
 driver.get(user_url[1])
 
 try:
+        link_elements = driver.find_elements(By.XPATH, "//a")
+        print("Number of hyperlink elements: ", len(link_elements))
+except NoSuchElementException:
+        print("Number of hyperlink elements: 0")
+print("Basic Open Redirection checks completed. Check the report for more detailed analysis")
+print(" ")
+
+try:
+        file_elements = driver.find_elements(By.XPATH, "//input[@type='file']")
+        print("Number of file upload elements: ", len(file_elements))
+except NoSuchElementException:
+        print("Number of file upload elements: 0")
+print("Basic File Upload Vulnerability checks completed. Check the report for more detailed analysis")
+print(" ")
+
+try:
+	form_elements = driver.find_elements(By.XPATH, "//form")
+	print("Number of form elements: ", len(form_elements))
+except NoSuchElementException:
+	print("Number of form elements: 0")
+print("Basic CSRF checks completed. Check the report for more detailed analysis")
+print(" ")
+
+try:
 	uname_element = driver.find_element(By.NAME, "uid")
 	print("Number of username elements: 1")
 except NoSuchElementException:
@@ -27,8 +51,9 @@ except NoSuchElementException:
 try:
 	driver.find_element(By.XPATH, "//input[@type='password']")
 except NoSuchElementException:
-	print("***************************Basic SQL Injection successfully executed!*************************************")
+	print("!!!!!!!!!!!!!!!!!!!!!!!!!!!Basic SQL Injection successfully executed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 print("Basic SQL Injection tests completed. Check the report for more detailed analysis")
+print(" ")
 
 input_elements = driver.find_elements(By.XPATH, "//input")
 text_inputs = driver.find_elements(By.XPATH, "//input[@type='text']")
@@ -46,10 +71,11 @@ for element in input_elements:
 		WebDriverWait(driver, 3).until(EC.alert_is_present())
 		alert = driver.switch_to.alert
 		alert.accept()
-		print("***************************Basic XSS successfully executed!*************************************")
+		print("!!!!!!!!!!!!!!!!!!!!!!!!!!!Basic XSS successfully executed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 		break
 	except TimeoutException:
 		print("No alert")
 print("Basic XSS tests completed. Check the report for more detailed analysis")
+print(" ")
 
 driver.close()
