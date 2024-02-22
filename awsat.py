@@ -486,7 +486,7 @@ for line in summary:
 	text.textLine(line)
 
 text.setFont('Times-Bold', 16)
-text.textLine("Craft a Malicious Page")
+text.textLine("Craft a Malicious Page:")
 
 text.setFont('Times-Roman', 16)
 summary = ["Create a malicious HTML page that includes a hidden form with the target action",
@@ -582,6 +582,186 @@ summary = ["https://portswigger.net/web-security/csrf",
 			"https://owasp.org/www-community/attacks/csrf", 
 			"https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html",
 			"https://en.wikipedia.org/wiki/Cross-site_request_forgery"]
+for line in summary:
+	text.textLine(line)
+
+pdf.drawText(text)
+pdf.showPage()
+
+text = pdf.beginText(40, 770)
+
+text.setFont('Times-Bold', 18)
+text.textLine("V. SQL Injection (SQLi):")
+
+text.setFont('Times-Italic', 18)
+text.textLine("")
+text.textLine("Objective:")
+
+text.setFont('Times-Roman', 16)
+summary = ["SQL injection vulnerabilities allow attackers to execute arbitrary SQL queries on", 
+			"a web application's database. This can lead to unauthorized access, data", 
+			"manipulation, or even the deletion of the entire database.",""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Italic', 18)
+text.textLine("Steps Taken:")
+
+text.setFont('Times-Bold', 16)
+text.textLine("")
+text.textLine("Detection:")
+
+text.setFont('Times-Roman', 16)
+summary = ["The tool analyzes input fields for potential SQL injection points.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Payloads:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Employs predefined SQL injection payloads to assess the security of input fields.", 
+			"Sample Payload: Inputting (' OR '1'='1';) -- to bypass a login form.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Findings:")
+text.setFont('Times-Roman', 16)
+summary = ["Number of Attack Vectors Identified: 1", 
+			"Attack Execution: " + "!!ATTACK SUCCEEDED!!", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("CVSS Score:")
+text.setFont('Times-Roman', 16)
+summary = ["Severity: High", 
+			"Score: [CVSS Score]", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Italic', 18)
+text.textLine("Do It Yourself!")
+
+text.setFont('Times-Bold', 16)
+text.textLine("")
+text.textLine("Identify Input Fields:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Locate input fields or parameters where user input is processed, such as login", 
+			"forms, search boxes, or URL parameters.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Input Malicious SQL Payloads:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Inject malicious SQL payloads into the input fields to exploit potential", 
+			"vulnerabilities", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Error-Based SQL Injection:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Intentionally trigger SQL errors by injecting payloads like", 
+			"' OR 1=CONVERT(int, (SELECT @@version)); --.", 
+			"Observe error messages that may reveal information about the database."]
+for line in summary:
+	text.textLine(line)
+
+pdf.drawText(text)
+pdf.showPage()
+
+text = pdf.beginText(40, 770)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Time-Based Blind SQL Injection:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Use time-delayed payloads to detect if the application is vulnerable to blind SQLi", 
+			"An example payload is ' OR IF(1=1, SLEEP(5), 0); --.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Boolean-Based Blind SQL Injection:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Craft payloads that rely on true/false conditions to extract information.", 
+			"Example payload: ' OR 1=1 --.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("UNION-Based SQL Injection:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Exploit the UNION SQL operator to combine the results with additional information.", 
+			"Example payload: ' UNION SELECT username, password FROM users; --.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Out-of-Band SQL Injection:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Utilize techniques like DNS requests or HTTP requests to retrieve data when classic", 
+			"SQL injection methods are restricted.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Italic', 18)
+text.textLine("Prevention:")
+
+text.setFont('Times-Bold', 16)
+text.textLine("")
+text.textLine("Parameterized Queries or Prepared Statements:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Instead of directly embedding user input into SQL queries, use parameterized queries", 
+			"or prepared statements provided by the programming language or database library.", 
+			"These mechanisms separate user input from the SQL query structure.",""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Avoid Dynamic SQL Construction:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Avoid dynamically constructing SQL queries by concatenating strings with user", 
+			"input. Dynamic SQL is prone to injection attacks.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Input Validation:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Validate and sanitize user inputs before using them in SQL queries. Input validation", 
+			"ensures that the input adheres to expected patterns, reducing the risk of SQLi.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Use Stored Procedures:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Employ stored procedures to encapsulate and execute database logic.", 
+			"Stored procedures help mitigate SQL injection by predefining the SQL operations", 
+			"that can be performed.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Escaping Special Characters:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Escape or sanitize special characters in user input to neutralize their potential", 
+			"impact on SQL queries.", ""]
 for line in summary:
 	text.textLine(line)
 
