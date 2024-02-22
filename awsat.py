@@ -417,5 +417,174 @@ for line in summary:
 	text.textLine(line)
 
 pdf.drawText(text)
+pdf.showPage()
+
+text = pdf.beginText(40, 770)
+
+text.setFont('Times-Bold', 18)
+text.textLine("IV. Cross Site Request Forgery (CSRF):")
+
+text.setFont('Times-Italic', 18)
+text.textLine("")
+text.textLine("Objective:")
+
+text.setFont('Times-Roman', 16)
+summary = ["CSRF occurs when an attacker tricks a user's browser into making unintended and", 
+			"unauthorized requests on behalf of the user. This can lead to actions being", 
+			"performed on the web application without the user's consent.",""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Italic', 18)
+text.textLine("Steps Taken:")
+
+text.setFont('Times-Bold', 16)
+text.textLine("")
+text.textLine("Detection:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Identifying CSRF tokens and analyzes form elements for potential vulnerabilities.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Payloads:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Uses predefined payloads to simulate CSRF attacks and assess vulnerability.", 
+			"Sample Payload: Tricking user into submitting a form with malicious content.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Findings:")
+text.setFont('Times-Roman', 16)
+summary = ["Number of Attack Vectors Identified: " + str(len(form_elements)), 
+			"Attack Execution: " + "None Identified", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("CVSS Score:")
+text.setFont('Times-Roman', 16)
+summary = ["Severity: Medium", 
+			"Score: [CVSS Score]", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Italic', 18)
+text.textLine("Do It Yourself!")
+
+text.setFont('Times-Bold', 16)
+text.textLine("")
+text.textLine("Analyze Form Submissions:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Identify forms within the application that perform actions with side effects and", 
+			"those that lack anti-CSRF mechanisms like tokens or same-site cookie attributes.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Craft a Malicious Page")
+
+text.setFont('Times-Roman', 16)
+summary = ["Create a malicious HTML page that includes a hidden form with the target action",
+			"and parameters.", 
+			"Ensure that the form mimics the structure of the legitimate forms in the application.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Host the Malicious Page:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Host the malicious HTML page on an external server accessible by the victim.", 
+			"The page should contain JavaScript to automatically submit the form."]
+for line in summary:
+	text.textLine(line)
+
+pdf.drawText(text)
+pdf.showPage()
+
+text = pdf.beginText(40, 770)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Trick the Victim:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Convince the victim to visit the malicious page, often through social engineering", 
+			"tactics like phishing emails or disguised links.", 
+			"Monitor the server logs to see if the forged request was processed successfully.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Italic', 18)
+text.textLine("Prevention:")
+
+text.setFont('Times-Bold', 16)
+text.textLine("")
+text.textLine("Use Anti-CSRF Tokens:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Include unique, unpredictable tokens in each HTML form. These tokens should be", 
+			"generated on the server side and embedded in the form as hidden fields or headers.", 
+			"Upon form submission, the server validates the token to ensure that the request", 
+			"originated from the legitimate application.",""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("SameSite Cookie Attribute:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Set the SameSite attribute for cookies to mitigate the risk of CSRF attacks. This", 
+			"attribute restricts when the browser sends cookies, ensuring they are only sent", 
+			"in requests originating from the same site as the target URL.", 
+			"Use SameSite=Lax or SameSite=Strict to provide varying levels of protection.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Check Referrer Header:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Verify the Referer header on the server to ensure that requests originate from the", 
+			"expected domain. However, note that the Referer header can be manipulated or", 
+			"omitted in some cases.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Custom Headers:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Include custom headers in requests and validate them on the server. Ensure that", 
+			"these headers are not accessible to scripts running in the browser", 
+			"(e.g., using the Access-Control-Expose-Headers header).", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Implement Time-Based Tokens:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Include a timestamp in the token and validate it on the server. Reject requests", 
+			"with expired tokens.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Italic', 18)
+text.textLine("Further Reading:")
+
+text.setFont('Times-Roman', 16)
+summary = ["https://portswigger.net/web-security/csrf", 
+			"https://owasp.org/www-community/attacks/csrf", 
+			"https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html",
+			"https://en.wikipedia.org/wiki/Cross-site_request_forgery"]
+for line in summary:
+	text.textLine(line)
+
+pdf.drawText(text)
 
 pdf.save()
