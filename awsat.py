@@ -146,7 +146,7 @@ text.setFont('Times-Bold', 16)
 text.textLine("Findings:")
 text.setFont('Times-Roman', 16)
 summary = ["Number of Attack Vectors Identified: " + str(len(link_elements)), 
-			"Attack Execution: " + "FAILED", ""]
+			"Attack Execution: " + "None Identified", ""]
 for line in summary:
 	text.textLine(line)
 
@@ -190,8 +190,8 @@ text.textLine("Provide Malicious Input:")
 
 text.setFont('Times-Roman', 16)
 summary = ["Inject a malicious URL or a URL with a redirect to an external domain.",
-			"Observe the application's response. If the application redirects to the", 
-			"provided URL without proper validation, there may be a vulnerability.", ""]
+			"Observe the application's response. If the application redirects to the provided", 
+			"URL without proper validation, there may be a vulnerability.", ""]
 for line in summary:
 	text.textLine(line)
 
@@ -208,8 +208,8 @@ text.setFont('Times-Bold', 16)
 text.textLine("Check for Filters and Validation:")
 
 text.setFont('Times-Roman', 16)
-summary = ["Investigate if the application has any input validation or filters in place. It ", 
-			"may have client-side or server-side filters to prevent malicious redirections.", ""]
+summary = ["Investigate if the application has any input validation or filters in place. It may", 
+			"have client-side or server-side filters to prevent malicious redirections.", ""]
 for line in summary:
 	text.textLine(line)
 
@@ -242,6 +242,177 @@ text.textLine("Relative URLs:")
 text.setFont('Times-Roman', 16)
 summary = ["Whenever possible, use relative URLs for redirection rather than full URLs.",
 			"This ensures that the redirection stays within the same domain.", ""]
+for line in summary:
+	text.textLine(line)
+
+pdf.drawText(text)
+pdf.showPage()
+
+text = pdf.beginText(40, 770)
+
+text.setFont('Times-Bold', 18)
+text.textLine("III. File Upload Vulnerability:")
+
+text.setFont('Times-Italic', 18)
+text.textLine("")
+text.textLine("Objective:")
+
+text.setFont('Times-Roman', 16)
+summary = ["File upload vulnerabilities enable attackers to upload malicious files to a web", 
+			"application, potentially leading to remote code execution, unauthorized access,", 
+			"or the compromise of sensitive data.",""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Italic', 18)
+text.textLine("Steps Taken:")
+
+text.setFont('Times-Bold', 16)
+text.textLine("")
+text.textLine("Detection:")
+
+text.setFont('Times-Roman', 16)
+summary = ["The tool analyzes webpages for file upload elements and assesses their security.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Payloads:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Employs predefined payloads to test the security of file upload functionalities.", 
+			"Sample Payload: File with a name containing executable code", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Findings:")
+text.setFont('Times-Roman', 16)
+summary = ["Number of Attack Vectors Identified: " + str(len(file_elements)), 
+			"Attack Execution: " + "None Identified", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("CVSS Score:")
+text.setFont('Times-Roman', 16)
+summary = ["Severity: High", 
+			"Score: [CVSS Score]", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Italic', 18)
+text.textLine("Do It Yourself!")
+
+text.setFont('Times-Bold', 16)
+text.textLine("")
+text.textLine("Upload Malicious File:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Attempt to upload a file that contains malicious code, such as a web shell or a", 
+			"file with embedded scripts.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Check for File Extension Bypass:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Some applications validate files based on file extensions. Try to bypass this by", 
+			"renaming a file with a valid extension but containing malicious code", 
+			"(e.g., renaming a .php file to .jpg).", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Check for Client-Side Validation:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Use browser developer tools to inspect and modify the HTML form, disabling", 
+			"any client-side validation that may be present.", ""]
+for line in summary:
+	text.textLine(line)
+
+pdf.drawText(text)
+pdf.showPage()
+
+text = pdf.beginText(40, 770)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Bypass Frontend Validation:")
+
+text.setFont('Times-Roman', 16)
+summary = ["If there is client-side validation, try to bypass it by manipulating the upload request", 
+			"using tools like Burp Suite or modifying the HTML form.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Explore File Upload Permissions:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Investigate how the application handles file permissions after upload. Ensure that", 
+			"uploaded files cannot be accessed or executed by unauthorized users.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Italic', 18)
+text.textLine("Prevention:")
+
+text.setFont('Times-Bold', 16)
+text.textLine("")
+text.textLine("File Type Validation:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Verify the file type by checking the file extension or using file signature analysis.", 
+			"Ensure that only allowed file types are accepted. Do not rely solely on client-side", 
+			"checks; perform server-side validation as well.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Content-Type Header Check:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Validate the Content-Type header of the file to ensure it matches the expected type.", 
+			"This helps prevent attackers from manipulating file extensions.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Disable Execution of Uploaded Files:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Ensure that uploaded files are not executable. Store uploaded files in a location", 
+			"separate from executable scripts and prevent the execution of uploaded content.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("File Size Limitation:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Set a maximum file size limit to prevent the upload of excessively large files,", 
+			"which can lead to denial-of-service (DoS) attacks.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Secure File Storage:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Store uploaded files outside the web root directory to prevent direct access.", 
+			"Use proper access controls to restrict who can access and modify uploaded files.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Italic', 18)
+text.textLine("Further Reading:")
+
+text.setFont('Times-Roman', 16)
+summary = ["https://portswigger.net/web-security/file-upload", 
+			"https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload", 
+			"https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html",""]
 for line in summary:
 	text.textLine(line)
 
