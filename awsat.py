@@ -766,5 +766,244 @@ for line in summary:
 	text.textLine(line)
 
 pdf.drawText(text)
+pdf.showPage()
+
+text = pdf.beginText(40, 770)
+
+text.setFont('Times-Bold', 18)
+text.textLine("VI. Cross-Site Scripting (XSS):")
+
+text.setFont('Times-Italic', 18)
+text.textLine("")
+text.textLine("Objective:")
+
+text.setFont('Times-Roman', 16)
+summary = ["XSS vulnerabilities enable attackers to inject malicious scripts into web pages,", 
+			"which are then executed by users' browsers. This can lead to the theft of sensitive", 
+			"information, session hijacking, or defacement of websites.",""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Italic', 18)
+text.textLine("Steps Taken:")
+
+text.setFont('Times-Bold', 16)
+text.textLine("")
+text.textLine("Detection:")
+
+text.setFont('Times-Roman', 16)
+summary = ["The tool scans webpages for input fields and text elements susceptible to XSS attacks.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Payloads:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Utilizes predefined XSS payloads to assess and simulate XSS attacks.", 
+			"Sample Payload: Injecting <script>alert('XSS')</script> in an input field.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Findings:")
+text.setFont('Times-Roman', 16)
+summary = ["Number of Attack Vectors Identified: " + str(len(input_elements)), 
+			"Attack Execution: " + "!!ATTACK SUCCEEDED!!", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("CVSS Score:")
+text.setFont('Times-Roman', 16)
+summary = ["Severity: High", 
+			"Score: [CVSS Score]", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Italic', 18)
+text.textLine("Do It Yourself!")
+
+text.setFont('Times-Bold', 16)
+text.textLine("")
+text.textLine("Identify Input Fields:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Locate input fields on web pages such as search bars, text boxes, and form fields.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Test with Attributes:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Inject payloads into HTML attributes. Examples include:", 
+			"<img src=x onerror=alert('XSS')>", 
+			"<a href=`javascript:alert('XSS')`>Click me</a>"]
+for line in summary:
+	text.textLine(line)
+
+pdf.drawText(text)
+pdf.showPage()
+
+text = pdf.beginText(40, 770)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Test with Malformed HTML:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Use payloads that exploit browser parsing issues. Examples include:", 
+			"<b onmouseover=alert('XSS')>mouseover here</b>", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Test Event Handlers:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Check event handlers for vulnerabilities. Examples include:", 
+			"onmouseover=`alert('XSS')`", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Test URL Parameters:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Inject payloads into URL parameters. Examples include:", 
+			"?search=<script>alert('XSS')</script>", 
+			"?name=<img src=x onerror=alert('XSS')>", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Test for Delayed Execution:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Use payloads that might be triggered after a delay, making detection challenging.", 
+			"<script>setTimeout(function(){alert('XSS')}, 5000);</script>", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Test for Stored XSS:")
+
+text.setFont('Times-Roman', 16)
+summary = ["If applicable, check for stored XSS vulnerabilities by injecting payloads that are", 
+			"stored and later displayed to other users.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Italic', 18)
+text.textLine("Prevention:")
+
+text.setFont('Times-Bold', 16)
+text.textLine("")
+text.textLine("Input Validation:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Validate and sanitize all user inputs on both client and server sides.", 
+			"Define and enforce a strict whitelist of allowed characters, rejecting any input", 
+			"that doesn't adhere to the defined criteria.",""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Output Encoding:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Encode user-generated content before rendering it in the HTML document.", 
+			"This involves converting special characters to their HTML entities.",
+			"Use proper output encoding functions such as htmlspecialchars() in PHP,", 
+			"escapeHtml in Java, or equivalent functions in other programming languages.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Content Security Policy (CSP):")
+
+text.setFont('Times-Roman', 16)
+summary = ["Implement Content Security Policy headers in your web application.", 
+			"CSP helps control which resources can be loaded and executed, reducing the", 
+			"risk of executing malicious scripts.",
+			"Configure CSP to block or restrict the use of inline scripts and unsafe practices.", ""]
+for line in summary:
+	text.textLine(line)
+
+pdf.drawText(text)
+pdf.showPage()
+
+text = pdf.beginText(40, 770)
+
+text.setFont('Times-Bold', 16)
+text.textLine("HTTP-Only Cookies:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Set the HTTP-only flag on cookies to prevent JavaScript access. This ensures", 
+			"that sensitive information, such as session cookies, cannot be accessed by", 
+			"malicious scripts.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Contextual Output Encoding:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Encode output based on the context where it will be used. Different contexts", 
+			"(HTML, attribute, JavaScript, etc.) have different encoding requirements.",
+			"Use functions specific to the output context, such as htmlspecialchars for HTML", 
+			"content and encodeURI for JavaScript.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Avoiding eval():")
+
+text.setFont('Times-Roman', 16)
+summary = ["Avoid using eval() and other dynamic code execution functions.",
+			"If dynamic code execution is necessary, validate and sanitize inputs thoroughly", 
+			"before execution.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Secure Headers:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Implement secure headers such as X-Content-Type-Options and X-Frame-Options", 
+			"to control content types and framing policies.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Use Security Libraries:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Leverage security libraries and frameworks that provide built-in protection", 
+			"against XSS, such as Java's OWASP AntiSamy or Ruby on Rails' sanitize helper.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Regular Expressions:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Use regular expressions to filter and sanitize input. Ensure that input adheres", 
+			"to expected patterns and reject any input that doesn't meet the criteria.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Italic', 18)
+text.textLine("Further Reading:")
+
+text.setFont('Times-Roman', 16)
+summary = ["https://portswigger.net/web-security/cross-site-scripting", 
+			"https://owasp.org/www-community/attacks/xss/", 
+			"https://csrc.nist.gov/glossary/term/cross_site_scripting",
+			"https://owasp.org/www-community/Types_of_Cross-Site_Scripting"]
+for line in summary:
+	text.textLine(line)
+
+pdf.drawText(text)
 
 pdf.save()
