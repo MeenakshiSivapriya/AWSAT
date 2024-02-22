@@ -412,7 +412,8 @@ text.textLine("Further Reading:")
 text.setFont('Times-Roman', 16)
 summary = ["https://portswigger.net/web-security/file-upload", 
 			"https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload", 
-			"https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html",""]
+			"https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html",
+			"https://cwe.mitre.org/data/definitions/434.html", ""]
 for line in summary:
 	text.textLine(line)
 
@@ -581,7 +582,9 @@ text.setFont('Times-Roman', 16)
 summary = ["https://portswigger.net/web-security/csrf", 
 			"https://owasp.org/www-community/attacks/csrf", 
 			"https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html",
-			"https://en.wikipedia.org/wiki/Cross-site_request_forgery"]
+			"https://cwe.mitre.org/data/definitions/352.html",
+			"https://csrc.nist.gov/glossary/term/cross_site_request_forgery",
+			"https://portswigger.net/web-security/csrf/preventing"]
 for line in summary:
 	text.textLine(line)
 
@@ -839,7 +842,16 @@ text.textLine("Test with Attributes:")
 text.setFont('Times-Roman', 16)
 summary = ["Inject payloads into HTML attributes. Examples include:", 
 			"<img src=x onerror=alert('XSS')>", 
-			"<a href=`javascript:alert('XSS')`>Click me</a>"]
+			"<a href=`javascript:alert('XSS')`>Click me</a>", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 16)
+text.textLine("Test with Malformed HTML:")
+
+text.setFont('Times-Roman', 16)
+summary = ["Use payloads that exploit browser parsing issues. Examples include:", 
+			"<b onmouseover=alert('XSS')>mouseover here</b>"]
 for line in summary:
 	text.textLine(line)
 
@@ -847,15 +859,6 @@ pdf.drawText(text)
 pdf.showPage()
 
 text = pdf.beginText(40, 770)
-
-text.setFont('Times-Bold', 16)
-text.textLine("Test with Malformed HTML:")
-
-text.setFont('Times-Roman', 16)
-summary = ["Use payloads that exploit browser parsing issues. Examples include:", 
-			"<b onmouseover=alert('XSS')>mouseover here</b>", ""]
-for line in summary:
-	text.textLine(line)
 
 text.setFont('Times-Bold', 16)
 text.textLine("Test Event Handlers:")
@@ -930,11 +933,6 @@ summary = ["Implement Content Security Policy headers in your web application.",
 for line in summary:
 	text.textLine(line)
 
-pdf.drawText(text)
-pdf.showPage()
-
-text = pdf.beginText(40, 770)
-
 text.setFont('Times-Bold', 16)
 text.textLine("HTTP-Only Cookies:")
 
@@ -944,6 +942,11 @@ summary = ["Set the HTTP-only flag on cookies to prevent JavaScript access. This
 			"malicious scripts.", ""]
 for line in summary:
 	text.textLine(line)
+
+pdf.drawText(text)
+pdf.showPage()
+
+text = pdf.beginText(40, 770)
 
 text.setFont('Times-Bold', 16)
 text.textLine("Contextual Output Encoding:")
@@ -1000,7 +1003,76 @@ text.setFont('Times-Roman', 16)
 summary = ["https://portswigger.net/web-security/cross-site-scripting", 
 			"https://owasp.org/www-community/attacks/xss/", 
 			"https://csrc.nist.gov/glossary/term/cross_site_scripting",
-			"https://owasp.org/www-community/Types_of_Cross-Site_Scripting"]
+			"https://owasp.org/www-community/Types_of_Cross-Site_Scripting",
+			"https://portswigger.net/web-security/cross-site-scripting/reflected",
+			"https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html",
+			"https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/01-Testing_for_Reflected_Cross_Site_Scripting",
+			"https://owasp.org/www-project-top-ten/2017/A7_2017-Cross-Site_Scripting_(XSS)",
+			"https://cheatsheetseries.owasp.org/cheatsheets/XSS_Filter_Evasion_Cheat_Sheet.html",
+			"https://ieeexplore.ieee.org/document/10128470",
+			"https://owasp.org/www-community/attacks/DOM_Based_XSS",
+			"https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html"]
+for line in summary:
+	text.textLine(line)
+
+pdf.drawText(text)
+pdf.showPage()
+
+text = pdf.beginText(40, 770)
+
+text.setFont('Times-Bold', 18)
+text.textLine("VII. Reference Links:")
+
+text.setFont('Times-Roman', 16)
+summary = ["", "To provide comprehensive support, the tool includes reference links and", 
+			"step-by-step guides for each vulnerability. These resources aid users in", 
+			"understanding the nature of the vulnerabilities detected and offer recommendations", 
+			"for mitigation.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Italic', 16)
+text.textLine("Additional references for Open Redirection Vulnerability:")
+
+text.setFont('Times-Roman', 16)
+summary = ["", "https://cwe.mitre.org/data/definitions/601.html", 
+			"https://portswigger.net/kb/issues/00500100_open-redirection-reflected", 
+			"https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html", 
+			"https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/11-Client_Side_Testing/04-Testing_for_Client_Side_URL_Redirect",
+			"https://portswigger.net/support/using-burp-to-test-for-open-redirections", 
+			"https://nvd.nist.gov/vuln/detail/CVE-2023-22797", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Italic', 16)
+text.textLine("Additional references for SQL Injection Vulnerability:")
+
+text.setFont('Times-Roman', 16)
+summary = ["", "https://owasp.org/www-community/attacks/SQL_Injection", 
+			"https://portswigger.net/web-security/sql-injection", 
+			"https://portswigger.net/kb/issues/00100200_sql-injection", 
+			"https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05-Testing_for_SQL_Injection",
+			"https://capec.mitre.org/data/definitions/66.html", 
+			"https://www.cisa.gov/sites/default/files/publications/Practical-SQLi-Identification.pdf", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Bold', 18)
+text.textLine("VIII. Conclusion:")
+
+text.setFont('Times-Roman', 16)
+summary = ["", "The Automated Web Security Analysis Tool serves as a crucial asset in", 
+			"identifying and addressing common web application vulnerabilities. As the", 
+			"project evolves, further enhancements will be made to maximize the tool's", 
+			"effectiveness and usability, ensuring its reliability across diverse web", 
+			"development environments.", ""]
+for line in summary:
+	text.textLine(line)
+
+text.setFont('Times-Italic', 16)
+summary = ["Note: CVSS scores will need to be determined based on the specific findings", 
+			"and impact of each vulnerability. Consult the Common Vulnerability Scoring", 
+			"System (CVSS) for accurate scoring.", ""]
 for line in summary:
 	text.textLine(line)
 
