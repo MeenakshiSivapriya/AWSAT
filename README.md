@@ -31,3 +31,12 @@ This initiative is crucial in a real-world context where web applications play a
 5.	Testing and Validation:
 •	Incorporation of a testing mechanism to validate the accuracy and effectiveness of the tool across various web applications and browsers.
 
+#### Try It Yourself!:
+You can download and run this tool on your computer with just a few steps:
+
+1. Clone the repository to your local machine.
+2. Download and install chromedriver following the steps here: https://chromedriver.chromium.org
+3. Run ```python3 awsat.py https://demo.testfire.net/login.jsp``` in your terminal.
+4. You can pass any website that you wish to test as a parameter to the tool.
+5. **Remember to get consent from the owners of the webpage!!**
+6. Access a quick summary of the output from the terminal and read the comprehensive report generated from the same directory.
