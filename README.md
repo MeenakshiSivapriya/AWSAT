@@ -1,9 +1,8 @@
 # AWSAT
 ## Automated Web Security Analysis Tool
-### CS 6727 Practicum Project
 
 #### Problem Statement:
-This practicum project proposes to develop an automated web security analysis tool that can intelligently scan webpages, identify potential security vulnerabilities, and generate comprehensive reports with actionable insights. The tool will focus on analyzing input fields, links, and other web elements to uncover threats such as Cross-Site Scripting (XSS), SQL Injection, Cross-Site Request Forgery (CSRF), and various other common web application vulnerabilities.
+This is an automated web security analysis tool that can intelligently scan webpages, identify potential security vulnerabilities, and generate comprehensive reports with actionable insights. The tool will focus on analyzing input fields, links, and other web elements to uncover threats such as Cross-Site Scripting (XSS), SQL Injection, Cross-Site Request Forgery (CSRF), and various other common web application vulnerabilities.
 
 #### Motivation:
 The importance of web security cannot be overstated, considering the increasing frequency and sophistication of cyber threats targeting web applications. Traditional security tools often require a significant level of expertise, limiting their accessibility to individuals without a strong security background. This project aims to bridge this gap by developing a tool that empowers non-security professionals, such as QAs and developers, to efficiently understand and test vulnerabilities. By providing detailed reports, sample payloads, and reference study links, the tool will enable users to enhance the security posture of their web applications without requiring in-depth security knowledge.
