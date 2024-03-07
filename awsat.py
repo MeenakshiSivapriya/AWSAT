@@ -39,12 +39,18 @@ try:
 	uname_element = driver.find_element(By.NAME, "uid")
 	print("Number of username elements: 1")
 except NoSuchElementException:
-	print("Number of username elements: 0")
+	try:
+		uname_element = driver.find_element(By.XPATH, "//input[@name='uname']")
+		print("Number of username elements: 1")
+	except:
+		print("Number of username elements: 0")
 try:
 	passwd_element = driver.find_element(By.XPATH, "//input[@type='password']")
 	print("Number of password elements: 1")
 
+	uname_element.clear()
 	uname_element.send_keys("admin")
+	passwd_element.clear()
 	passwd_element.send_keys("' or '1'='1")
 	passwd_element.send_keys(Keys.RETURN)
 
@@ -58,18 +64,20 @@ except NoSuchElementException:
 print("Basic SQL Injection tests completed. Check the report for more detailed analysis")
 print(" ")
 
-input_elements = driver.find_elements(By.XPATH, "//input")
-text_inputs = driver.find_elements(By.XPATH, "//input[@type='text']")
+input_elements = driver.find_elements(By.XPATH, "//form//input")
+text_inputs = driver.find_elements(By.XPATH, "//form//input[@type='text']")
 print("Number of input elements: ", len(input_elements))
 print("Number of text input elements: ", len(text_inputs))
 
-for element in input_elements:
+for count in range(len(input_elements)):
+	input_elements = driver.find_elements(By.XPATH, "//form//input")
+	element = input_elements[count]
 	try:
-		element.send_keys("<script>alert('XSS')</script>")
+		element.clear()
+		element.send_keys("<script>alert(document.domain)</script>")
 		element.send_keys(Keys.RETURN)
 	except:
-		print("No alert")
-		continue
+		print("Not interactive")
 	try:
 		WebDriverWait(driver, 3).until(EC.alert_is_present())
 		alert = driver.switch_to.alert
@@ -77,7 +85,8 @@ for element in input_elements:
 		print("!!!!!!!!!!!!!!!!!!!!!!!!!!!Basic XSS successfully executed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 		break
 	except TimeoutException:
-		print("No alert")
+		print("No XSS alert")
+		driver.back()
 print("Basic XSS tests completed. Check the report for more detailed analysis")
 print(" ")
 
@@ -97,6 +106,9 @@ text = pdf.beginText(40, 690)
 
 text.setFont('Times-Bold', 18)
 text.textLine("I. Executive Summary:")
+
+text.setFont('Times-Bold', 14)
+text.textLine("Targeted Web Page: " + user_url[1])
 
 text.setFont('Times-Roman', 16)
 summary = ["", "This report details the progress and findings of the Automated Web Security", 
@@ -154,7 +166,7 @@ text.setFont('Times-Bold', 16)
 text.textLine("CVSS Score:")
 text.setFont('Times-Roman', 16)
 summary = ["Severity: Medium", 
-			"Score: [CVSS Score]", ""]
+			"Score: 6.1", ""]
 for line in summary:
 	text.textLine(line)
 
@@ -297,7 +309,7 @@ text.setFont('Times-Bold', 16)
 text.textLine("CVSS Score:")
 text.setFont('Times-Roman', 16)
 summary = ["Severity: High", 
-			"Score: [CVSS Score]", ""]
+			"Score: 8.8", ""]
 for line in summary:
 	text.textLine(line)
 
@@ -469,7 +481,7 @@ text.setFont('Times-Bold', 16)
 text.textLine("CVSS Score:")
 text.setFont('Times-Roman', 16)
 summary = ["Severity: Medium", 
-			"Score: [CVSS Score]", ""]
+			"Score: 6.5", ""]
 for line in summary:
 	text.textLine(line)
 
@@ -640,7 +652,7 @@ text.setFont('Times-Bold', 16)
 text.textLine("CVSS Score:")
 text.setFont('Times-Roman', 16)
 summary = ["Severity: High", 
-			"Score: [CVSS Score]", ""]
+			"Score: 8.8", ""]
 for line in summary:
 	text.textLine(line)
 
@@ -819,8 +831,8 @@ for line in summary:
 text.setFont('Times-Bold', 16)
 text.textLine("CVSS Score:")
 text.setFont('Times-Roman', 16)
-summary = ["Severity: High", 
-			"Score: [CVSS Score]", ""]
+summary = ["Severity: Medium", 
+			"Score: 6.1", ""]
 for line in summary:
 	text.textLine(line)
 
