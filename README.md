@@ -39,3 +39,13 @@ You can download and run this tool on your computer with just a few steps:
 4. You can pass any website that you wish to test as a parameter to the tool.
 5. **Remember to get consent from the owners of the webpage!!**
 6. Access a quick summary of the output from the terminal and read the comprehensive report generated from the same directory.
+
+#### Tested on:
+Following ethical practices of testing only on consenting websites, this tool has been tested to be accurate on the following websites:
+
+1. https://xss-quiz.int21h.jp
+2. http://sudo.co.il/xss/level0.php
+3. http://www.xssgame.com/f/m4KKGHi2rVUN/
+4. https://demo.testfire.net/login.jsp
+5. http://testphp.vulnweb.com/userinfo.php
+6. https://xss-game.appspot.com/level1/frame
