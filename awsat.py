@@ -1,4 +1,5 @@
 import sys
+import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -10,6 +11,7 @@ from reportlab.pdfgen import canvas
 user_url = sys.argv
 driver = webdriver.Chrome()
 driver.get(user_url[1])
+start_time = time.time()
 
 try:
         link_elements = driver.find_elements(By.XPATH, "//a")
@@ -91,6 +93,8 @@ print("Basic XSS tests completed. Check the report for more detailed analysis")
 print(" ")
 
 driver.close()
+end_time = time.time()
+print("Time taken: " + str(end_time - start_time))
 
 pdf = canvas.Canvas('awsat_report.pdf')
 
